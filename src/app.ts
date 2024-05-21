@@ -5,7 +5,7 @@ import { ProductRoutes } from "./app/modules/products/product.route";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://deshishop.vercel.app/" }));
 
 // application routes
 app.use("/api", ProductRoutes);
