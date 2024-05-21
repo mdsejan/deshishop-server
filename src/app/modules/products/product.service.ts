@@ -5,3 +5,7 @@ const createProductIntoDB = async (product: Product) => {
   const result = ProductModel.create(product);
   return result;
 };
+
+export const productServices = {
+  createProductIntoDB,
+};
