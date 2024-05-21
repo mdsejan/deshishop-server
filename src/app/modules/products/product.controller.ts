@@ -3,13 +3,13 @@ import { productServices } from "./product.service";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const productData = req.body.student;
+    const productData = req.body;
 
     const result = await productServices.createProductIntoDB(productData);
 
     res.status(200).json({
       success: true,
-      message: "Student is Created Successfully",
+      message: "Product created successfully!",
       data: result,
     });
   } catch (err) {
