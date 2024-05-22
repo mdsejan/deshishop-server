@@ -2,29 +2,56 @@
 
 DeshiShop is an e-commerce application developed with Express and TypeScript, integrating MongoDB with Mongoose for efficient data management. It features comprehensive product management capabilities, including creating, retrieving, updating, deleting, and searching for products. The application also supports order management by allowing users to place orders, retrieve all orders or specific orders by user email, and automatically update product inventory upon order creation. Data validation using Joi or Zod ensures data integrity, while robust error handling provides meaningful error messages for various scenarios. The project adheres to clean coding practices, with a focus on modularity, readability, and consistent naming conventions. The DeshiShop repository and live deployment are accessible via GitHub and a live server link.
 
-#### Production API endpoint for testing
+# Production API endpoint for testing
 
 - https://deshishop.vercel.app/
 - https://deshishop.vercel.app/api/products
 - https://deshishop.vercel.app/api/orders
 
-## Features
+# Features
 
 - CRUD operations for products and orders
 - Search products by name
 - Filter orders by user email
 
-## API Endpoints
+# API Endpoints
 
-### Products
+## Product Management
 
-- **Create a Product**
+### **1. Create a New Product**
 
-  - **URL:** `/api/products`
-  - **Method:** `POST`
-  - **Request Body:**
-    ```json
-    {
+- **Endpoint**: **`/api/products`**
+- **Method:** `POST`
+- **Sample Request Body**:
+  ```json
+  {
+    "name": "iPhone 13",
+    "description": "A sleek and powerful smartphone with cutting-edge features.",
+    "price": 999,
+    "category": "Electronics",
+    "tags": ["smartphone", "Apple", "iOS"],
+    "variants": [
+      {
+        "type": "Color",
+        "value": "Midnight Blue"
+      },
+      {
+        "type": "Storage Capacity",
+        "value": "256GB"
+      }
+    ],
+    "inventory": {
+      "quantity": 50,
+      "inStock": true
+    }
+  }
+  ```
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Product created successfully!",
+    "data": {
       "name": "iPhone 13",
       "description": "A sleek and powerful smartphone with cutting-edge features.",
       "price": 999,
@@ -45,155 +72,363 @@ DeshiShop is an e-commerce application developed with Express and TypeScript, in
         "inStock": true
       }
     }
-    ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Product created successfully!",
-      "data": { ... }
+  }
+  ```
+
+### **2. Retrieve a List of All Products**
+
+- **Endpoint**: **`/api/products`**
+- **Method:** `GET`
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Products fetched successfully!",
+    "data": [
+      {
+        "name": "iPhone 13",
+        "description": "A sleek and powerful smartphone with cutting-edge features.",
+        "price": 999,
+        "category": "Electronics",
+        "tags": ["smartphone", "Apple", "iOS"],
+        "variants": [
+          {
+            "type": "Color",
+            "value": "Midnight Blue"
+          },
+          {
+            "type": "Storage Capacity",
+            "value": "256GB"
+          }
+        ],
+        "inventory": {
+          "quantity": 50,
+          "inStock": true
+        }
+      },
+      {
+        "name": "Samsung Galaxy S21",
+        "description": "High-performance Android smartphone with advanced camera capabilities.",
+        "price": 799,
+        "category": "Electronics",
+        "tags": ["smartphone", "Samsung", "Android"],
+        "variants": [
+          {
+            "type": "Color",
+            "value": "Phantom Black"
+          },
+          {
+            "type": "Storage Capacity",
+            "value": "128GB"
+          }
+        ],
+        "inventory": {
+          "quantity": 30,
+          "inStock": true
+        }
+      }
+      // Additional products can be added here...
+    ]
+  }
+  ```
+
+### **3. Retrieve a Specific Product by ID**
+
+- **Endpoint**: **`/api/products/:productId`**
+- **Method: `GET`**
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Product fetched successfully!",
+    "data": {
+      "name": "iPhone 13",
+      "description": "A sleek and powerful smartphone with cutting-edge features.",
+      "price": 999,
+      "category": "Electronics",
+      "tags": ["smartphone", "Apple", "iOS"],
+      "variants": [
+        {
+          "type": "Color",
+          "value": "Midnight Blue"
+        },
+        {
+          "type": "Storage Capacity",
+          "value": "256GB"
+        }
+      ],
+      "inventory": {
+        "quantity": 50,
+        "inStock": true
+      }
     }
-    ```
+  }
+  ```
 
-- **Get All Products**
+### **4. Update Product Information**
 
-  - **URL:** `/api/products`
-  - **Method:** `GET`
-  - **Query Parameters:**
-    - `searchTerm` (optional) - Search for products by name
-    - **URL:** `/api/products?searchTerm=iphone`
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Products fetched successfully!",
-      "data": [ ... ]
+- **Endpoint**: **`/api/products/:productId`**
+- **Method: `PUT`**
+- **Sample Request Body**:
+  ```json
+  {
+    "name": "iPhone 13",
+    "description": "A sleek and powerful smartphone with cutting-edge features.",
+    "price": 999,
+    "category": "Electronics",
+    "tags": ["smartphone", "Apple", "iOS"],
+    "variants": [
+      {
+        "type": "Color",
+        "value": "Midnight Blue"
+      },
+      {
+        "type": "Storage Capacity",
+        "value": "256GB"
+      }
+    ],
+    "inventory": {
+      "quantity": 50,
+      "inStock": true
     }
-    ```
-
-- **Get a Product by ID**
-
-  - **URL:** `/api/products/:productId`
-  - **Method:** `GET`
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Product fetched successfully!",
-      "data": { ... }
+  }
+  ```
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Product updated successfully!",
+    "data": {
+      "name": "iPhone 13",
+      "description": "A sleek and powerful smartphone with cutting-edge features.",
+      "price": 999,
+      "category": "Electronics",
+      "tags": ["smartphone", "Apple", "iOS"],
+      "variants": [
+        {
+          "type": "Color",
+          "value": "Midnight Blue"
+        },
+        {
+          "type": "Storage Capacity",
+          "value": "256GB"
+        }
+      ],
+      "inventory": {
+        "quantity": 49,
+        "inStock": true
+      }
     }
-    ```
+  }
+  ```
 
-- **Update a Product**
+### **5. Delete a Product**
 
-  - **URL:** `/api/products/:productId`
-  - **Method:** `PUT`
-  - **Request Body:** (same as creating a product)
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Product updated successfully!",
-      "data": { ... }
+- **Endpoint**: **`/api/products/:productId`**
+- **Method: `DELETE`**
+- **Sample Response**:
+
+  ```json
+  {
+    "success": true,
+    "message": "Product deleted successfully!",
+    "data": null
+  }
+
+  // The product should be deleted from the database.
+  ```
+
+### **6. Search a product**
+
+- **Endpoint**: `/api/products?searchTerm=iphone`
+- **Method: GET**
+- **Sample Response**:
+
+```jsx
+{
+    "success": true,
+    "message": "Products matching search term 'iphone' fetched successfully!",
+    "data": [
+        {
+            "name": "iPhone 13 Pro",
+            "description": "The latest flagship iPhone model with advanced camera features.",
+            "price": 999,
+            "category": "Smartphones",
+            "tags": ["iPhone", "Apple", "Mobile"],
+            "variants": [
+                {
+                    "type": "Color",
+                    "value": "Graphite"
+                },
+                {
+                    "type": "Storage",
+                    "value": "256GB"
+                }
+            ],
+            "inventory": {
+                "quantity": 50,
+                "inStock": true
+            }
+        },
+        {
+            "name": "iPhone SE",
+            "description": "Compact and affordable iPhone model with powerful performance.",
+            "price": 399,
+            "category": "Smartphones",
+            "tags": ["iPhone", "Apple", "Mobile"],
+            "variants": [
+                {
+                    "type": "Color",
+                    "value": "White"
+                },
+                {
+                    "type": "Storage",
+                    "value": "128GB"
+                }
+            ],
+            "inventory": {
+                "quantity": 20,
+                "inStock": true
+            }
+        }
+    ]
+}
+```
+
+## Order Management
+
+### **Order Management API Endpoints**
+
+### **1.Create a New Order**
+
+- **Endpoint**: **`/api/orders`**
+- **Method: `POST`**
+- **Request Body**:
+  ```json
+  {
+    "email": "level2@programming-hero.com",
+    "productId": "5fd67e890b60c903cd8544a3",
+    "price": 999,
+    "quantity": 1
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Order created successfully!",
+    "data": {
+      "email": "level2@programming-hero.com",
+      "productId": "5fd67e890b60c903cd8544a3",
+      "price": 999,
+      "quantity": 1
     }
-    ```
+  }
+  ```
 
-- **Delete a Product**
-  - **URL:** `/api/products/:productId`
-  - **Method:** `DELETE`
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Product deleted successfully!",
-      "data": null
-    }
-    ```
+### **2.Retrieve All Orders**
 
-### Orders
+- **Endpoint**: **`/api/orders`**
+- **Method: `GET`**
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Orders fetched successfully!",
+    "data": [
+      {
+        "email": "level2@programming-hero.com",
+        "productId": "5fd67e890b60c903cd8544a3",
+        "price": 999,
+        "quantity": 1
+      }
+      // more orders...
+    ]
+  }
+  ```
 
-- **NOTE**
+### **3. Retrieve Orders by User Email**
 
-  - Need a valid id from product list for order to be placed.
+- **Endpoint**: `/api/orders?email=level2@programming-hero.com`
+- **Method:** `GET`
+- **Sample Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Orders fetched successfully for user email!",
+    "data": [
+      {
+        "email": "level2@programming-hero.com",
+        "productId": "5fd67e890b60c903cd8544a3",
+        "price": 999,
+        "quantity": 1
+      }
+      // more orders for the user...
+    ]
+  }
+  ```
 
-- **Get All Orders**
-  - **URL:** `/api/orders`
-  - **Method:** `GET`
-  - **Query Parameters:**
-    - `email` (optional) - Filter orders by user email
-    - **URL:** `/api/orders?email=level2@programming-hero.com`
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Orders fetched successfully!",
-      "data": [ ... ]
-    }
-    ```
+# Run The Project Locally
 
-# Prerequisites for Run Locally
-
-Before you begin, ensure you have met the following requirements:
+Before you begin, ensure you have met the following requirements and follow the steps:
 
 - Node.js (version 14 or higher)
 - npm (Node Package Manager)
-- MongoDB (you can use a local instance or MongoDB Atlas for cloud-hosted database)
+- MongoDB (you can use a local instance or MongoDB Atlas for the cloud-hosted database)
 
-# Getting Started
+- **Clone the Repository**
 
-### 1. Clone the Repository
+  -
 
-```bash
-git clone https://github.com/mdsejan/deshishop-server.git
-cd deshishop
-```
+  ```bash
+  git clone https://github.com/mdsejan/deshishop-server.git
+  cd deshishop
+  ```
 
-### 2. Install Dependencies
+- ## **Install Dependencies**
 
-You can use npm to install the project dependencies.
+  ```bash
+  npm install
+  ```
 
-```bash
-npm install
-```
+- ## **Setup Environment Variables**
 
-### 3. Setup Environment Variables
+  <p>Create a `.env` file in the root directory of the project and add the following environment variables. You can modify the values according to your setup.</p>
 
-Create a `.env` file in the root directory of the project and add the following environment variables. You can modify the values according to your setup.
+  ```env
+  PORT=5000
+  DATABASE_URL=mongodb+srv://<UserName>:<Password>@cluster*** (Mongodb Database Driver URL)
+  ```
 
-```env
-PORT=5000
-DATABASE_URL=mongodb+srv://<UserName>:<Password>@cluster*** (Mongodb Database Driver URL)
-```
+- ## **Run the Application**
 
-### 4. Run the Application
+  <p>To run the application in development mode, use the following command:</p>
 
-To run the application in development mode, use the following command:
+  ```bash
+  npm run start:dev
+  ```
 
-```bash
-npm run start:dev
-```
+  This command uses `ts-node-dev` to run the TypeScript code and watch for any changes, automatically restarting the server when changes are detected.
 
-This command uses `ts-node-dev` to run the TypeScript code and watch for any changes, automatically restarting the server when changes are detected.
+- ## **Linting**
 
-### 5. Linting
+  To lint the code, you can use the following command:
 
-To lint the code, you can use the following command:
+  ```bash
+  npm run lint
+  ```
 
-```bash
-npm run lint
-```
+  To automatically fix linting errors:
 
-To automatically fix linting errors:
+  ```bash
+  npm run lint:fix
+  ```
 
-```bash
-npm run lint:fix
-```
+- ## **Acces The App from browser**
 
-### 6. Access the API
+  - The APP will be running on `http://localhost:5000`.
 
-- The API will be running on `http://localhost:5000`.
-
-# Usage
+- **Usage**
 
 You can use tools like [Postman](https://www.postman.com/) to interact with the API endpoints.
 
