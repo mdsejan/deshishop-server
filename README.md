@@ -14,6 +14,70 @@ DeshiShop is an e-commerce application developed with Express and TypeScript, in
 - Search products by name
 - Filter orders by user email
 
+# Run The Project Locally
+
+Before you begin, ensure you have met the following requirements and follow the steps:
+
+- Node.js (version 14 or higher)
+- npm (Node Package Manager)
+- MongoDB (you can use a local instance or MongoDB Atlas for the cloud-hosted database)
+
+- **Clone the Repository**
+
+  -
+
+  ```bash
+  git clone https://github.com/mdsejan/deshishop-server.git
+  cd deshishop
+  ```
+
+- ## **Install Dependencies**
+
+  ```bash
+  npm install
+  ```
+
+- ## **Setup Environment Variables**
+
+  <p>Create a `.env` file in the root directory of the project and add the following environment variables. You can modify the values according to your setup.</p>
+
+  ```env
+  PORT=5000
+  DATABASE_URL=mongodb+srv://<UserName>:<Password>@cluster*** (Mongodb Database Driver URL)
+  ```
+
+- ## **Run the Application**
+
+  <p>To run the application in development mode, use the following command:</p>
+
+  ```bash
+  npm run start:dev
+  ```
+
+  This command uses `ts-node-dev` to run the TypeScript code and watch for any changes, automatically restarting the server when changes are detected.
+
+- ## **Linting**
+
+  To lint the code, you can use the following command:
+
+  ```bash
+  npm run lint
+  ```
+
+  To automatically fix linting errors:
+
+  ```bash
+  npm run lint:fix
+  ```
+
+- ## **Acces The App from browser**
+
+  - The APP will be running on `http://localhost:5000`.
+
+- **Usage**
+
+You can use tools like [Postman](https://www.postman.com/) to interact with the API endpoints.
+
 # API Endpoints
 
 ## Product Management
@@ -367,70 +431,6 @@ DeshiShop is an e-commerce application developed with Express and TypeScript, in
     ]
   }
   ```
-
-# Run The Project Locally
-
-Before you begin, ensure you have met the following requirements and follow the steps:
-
-- Node.js (version 14 or higher)
-- npm (Node Package Manager)
-- MongoDB (you can use a local instance or MongoDB Atlas for the cloud-hosted database)
-
-- **Clone the Repository**
-
-  -
-
-  ```bash
-  git clone https://github.com/mdsejan/deshishop-server.git
-  cd deshishop
-  ```
-
-- ## **Install Dependencies**
-
-  ```bash
-  npm install
-  ```
-
-- ## **Setup Environment Variables**
-
-  <p>Create a `.env` file in the root directory of the project and add the following environment variables. You can modify the values according to your setup.</p>
-
-  ```env
-  PORT=5000
-  DATABASE_URL=mongodb+srv://<UserName>:<Password>@cluster*** (Mongodb Database Driver URL)
-  ```
-
-- ## **Run the Application**
-
-  <p>To run the application in development mode, use the following command:</p>
-
-  ```bash
-  npm run start:dev
-  ```
-
-  This command uses `ts-node-dev` to run the TypeScript code and watch for any changes, automatically restarting the server when changes are detected.
-
-- ## **Linting**
-
-  To lint the code, you can use the following command:
-
-  ```bash
-  npm run lint
-  ```
-
-  To automatically fix linting errors:
-
-  ```bash
-  npm run lint:fix
-  ```
-
-- ## **Acces The App from browser**
-
-  - The APP will be running on `http://localhost:5000`.
-
-- **Usage**
-
-You can use tools like [Postman](https://www.postman.com/) to interact with the API endpoints.
 
 # Project Structure
 
