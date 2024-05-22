@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { Order } from "./order.interface";
 
 // Create a Mongoose schema for the Order

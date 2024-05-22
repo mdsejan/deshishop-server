@@ -6,7 +6,136 @@ This project is a Node.js application using TypeScript, Express, and MongoDB. Th
 
 Md. Sejan
 
-# Prerequisites
+#### Production API endpoint for testing
+
+- https://deshishop.vercel.app/
+- https://deshishop.vercel.app/api/products
+- https://deshishop.vercel.app/api/orders
+
+## Features
+
+- CRUD operations for products and orders
+- Search products by name
+- Filter orders by user email
+
+## API Endpoints
+
+### Products
+
+- **Create a Product**
+
+  - **URL:** `/api/products`
+  - **Method:** `POST`
+  - **Request Body:**
+    ```json
+    {
+      "name": "iPhone 13",
+      "description": "A sleek and powerful smartphone with cutting-edge features.",
+      "price": 999,
+      "category": "Electronics",
+      "tags": ["smartphone", "Apple", "iOS"],
+      "variants": [
+        {
+          "type": "Color",
+          "value": "Midnight Blue"
+        },
+        {
+          "type": "Storage Capacity",
+          "value": "256GB"
+        }
+      ],
+      "inventory": {
+        "quantity": 50,
+        "inStock": true
+      }
+    }
+    ```
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Product created successfully!",
+      "data": { ... }
+    }
+    ```
+
+- **Get All Products**
+
+  - **URL:** `/api/products`
+  - **Method:** `GET`
+  - **Query Parameters:**
+    - `searchTerm` (optional) - Search for products by name
+    - **URL:** `/api/products?searchTerm=iphone`
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Products fetched successfully!",
+      "data": [ ... ]
+    }
+    ```
+
+- **Get a Product by ID**
+
+  - **URL:** `/api/products/:productId`
+  - **Method:** `GET`
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Product fetched successfully!",
+      "data": { ... }
+    }
+    ```
+
+- **Update a Product**
+
+  - **URL:** `/api/products/:productId`
+  - **Method:** `PUT`
+  - **Request Body:** (same as creating a product)
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Product updated successfully!",
+      "data": { ... }
+    }
+    ```
+
+- **Delete a Product**
+  - **URL:** `/api/products/:productId`
+  - **Method:** `DELETE`
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Product deleted successfully!",
+      "data": null
+    }
+    ```
+
+### Orders
+
+- **NOTE**
+
+  - Need a valid id from product list for order to be placed.
+
+- **Get All Orders**
+  - **URL:** `/api/orders`
+  - **Method:** `GET`
+  - **Query Parameters:**
+    - `email` (optional) - Filter orders by user email
+    - **URL:** `/api/orders?email=level2@programming-hero.com`
+  - **Response:**
+    ```json
+    {
+      "success": true,
+      "message": "Orders fetched successfully!",
+      "data": [ ... ]
+    }
+    ```
+
+# Prerequisites for Run Locally
 
 Before you begin, ensure you have met the following requirements:
 
