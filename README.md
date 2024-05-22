@@ -1,10 +1,6 @@
 # Overview
 
-This project is a Node.js application using TypeScript, Express, and MongoDB. The application is designed to be run in a local development environment with the ability to connect to a MongoDB database.
-
-# Author
-
-Md. Sejan
+DeshiShop is an e-commerce application developed with Express and TypeScript, integrating MongoDB with Mongoose for efficient data management. It features comprehensive product management capabilities, including creating, retrieving, updating, deleting, and searching for products. The application also supports order management by allowing users to place orders, retrieve all orders or specific orders by user email, and automatically update product inventory upon order creation. Data validation using Joi or Zod ensures data integrity, while robust error handling provides meaningful error messages for various scenarios. The project adheres to clean coding practices, with a focus on modularity, readability, and consistent naming conventions. The DeshiShop repository and live deployment are accessible via GitHub and a live server link.
 
 #### Production API endpoint for testing
 

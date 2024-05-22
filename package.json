@@ -10,7 +10,7 @@
   },
   "author": "Md. Sejan",
   "license": "ISC",
-  "description": "",
+  "description": "DeshiShop is an e-commerce application built with Express and TypeScript, using MongoDB with Mongoose for data management. It enables comprehensive product and order management, including creating, retrieving, updating, deleting, and searching for products. Order features include placing orders, viewing all orders, and managing inventory automatically.",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
