@@ -214,6 +214,24 @@ DeshiShop
 │   ├── app
 │   │   ├── config
 │   │   └── modules
+│   │       │
+│   │       ├── Orders
+│   │       │   │
+│   │       │   ├── order.controller.ts
+│   │       │   ├── order.interface.ts
+│   │       │   ├── order.model.ts
+│   │       │   ├── order.route.ts
+│   │       │   ├── order.service.ts
+│   │       │   └── order.validation.ts
+│   │       │
+│   │       └── Products
+│   │           │
+│   │           ├── poduct.controller.ts
+│   │           ├── poduct.interface.ts
+│   │           ├── poduct.model.ts
+│   │           ├── poduct.route.ts
+│   │           ├── poduct.service.ts
+│   │           └── poduct.validation.ts
 │   │
 │   ├── app.ts
 │   └── server.ts
