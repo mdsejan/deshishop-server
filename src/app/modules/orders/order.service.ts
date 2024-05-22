@@ -12,6 +12,25 @@ const createOrderIntoDB = async (validatedOrderData: Order) => {
   }
 };
 
+// Retrieve All Orders
+
+const getOrderFromDB = async (queryEmail: string | undefined) => {
+  try {
+    let orders;
+
+    if (queryEmail) {
+      orders = await OrderModel.find({ email: queryEmail });
+    } else {
+      orders = await OrderModel.find();
+    }
+
+    return orders;
+  } catch (error) {
+    console.error("Error fetching orders from DB:", error);
+  }
+};
+
 export const orderServices = {
   createOrderIntoDB,
+  getOrderFromDB,
 };

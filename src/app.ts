@@ -10,7 +10,7 @@ app.use(cors({ origin: "https://deshishop.vercel.app/" }));
 
 // application routes
 app.use("/api", ProductRoutes);
-app.use("/api/orders", OrderRoutes);
+app.use("/api", OrderRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Server Running");
