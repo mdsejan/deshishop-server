@@ -183,19 +183,19 @@ To lint the code, you can use the following command:
 npm run lint
 ```
 
-### 5. Linting
-
-To lint the code, you can use the following command:
-
-```bash
-npm run lint
-```
-
 To automatically fix linting errors:
 
 ```bash
 npm run lint:fix
 ```
+
+### 6. Access the API
+
+- The API will be running on `http://localhost:5000`.
+
+# Usage
+
+You can use tools like [Postman](https://www.postman.com/) to interact with the API endpoints.
 
 # Project Structure
 
